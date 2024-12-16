@@ -27,7 +27,8 @@ values ('Denmark', 'Danish'),
        ('El Salvador', 'Salvadorian'),
        ('Brazil', 'Portuguese' ),
        ('Egypt', 'Arabic'),
-       ('Korea', 'Korean');
+       ('Korea', 'Korean'),
+       ('France', 'French');
 
 
 insert into country (country_name, country_language)

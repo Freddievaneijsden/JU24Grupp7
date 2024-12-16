@@ -2,6 +2,7 @@ package CRUD;
 
 import entity.Country;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.TypedQuery;
 
 import java.util.List;
@@ -27,7 +28,7 @@ public class CountrySql {
         });
     }
 
-    public static void selectCountry(String countryName) {
+    public static void selectCountryAndPrint(String countryName) {
         inTransaction(entityManager -> {
             if (countryName == null || countryName.isEmpty()) {
                 System.out.println("Name cannot be empty or null");
@@ -43,6 +44,25 @@ public class CountrySql {
             } else countries.forEach(System.out::println);
 
         });
+    }
+
+    public static Country selectCountryAndReturn(String countryName) {
+        final Country[] countryHolder = new Country[1];
+        inTransaction(entityManager -> {
+            if (countryName == null || countryName.isEmpty()) {
+                System.out.println("Name cannot be empty or null");
+            }
+
+            TypedQuery<Country> query = entityManager.createQuery("SELECT c FROM Country c WHERE c.countryName = :name", Country.class);
+            query.setParameter("name", countryName);
+            List<Country> countries = query.getResultList();
+
+            if (countries.isEmpty()) {
+                System.out.println("Country not found");
+            }
+            else countryHolder[0] = countries.get(0);
+        });
+        return countryHolder[0];
     }
 
     public static void insertCountry(String countryName, String countryLanguage) {
