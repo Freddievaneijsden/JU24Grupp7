@@ -9,9 +9,10 @@ import java.util.List;
 
 import static util.JPAUtil.inTransaction;
 
-public class CountrySql {
+public class CountrySql implements Crudable{
 
-    public static void deleteCountry(String countryName) {
+    @Override
+    public void deleteOne(String countryName) {
         inTransaction(entityManager -> {
             TypedQuery<Country> query = entityManager.createQuery(
                     "SELECT c FROM Country c WHERE c.countryName = :name", Country.class);
@@ -28,7 +29,8 @@ public class CountrySql {
         });
     }
 
-    public static void selectCountryAndPrint(String countryName) {
+    @Override
+    public void selectOne(String countryName) {
         inTransaction(entityManager -> {
             if (countryName == null || countryName.isEmpty()) {
                 System.out.println("Name cannot be empty or null");
@@ -46,26 +48,8 @@ public class CountrySql {
         });
     }
 
-    public static Country selectCountryAndReturn(String countryName) {
-        final Country[] countryHolder = new Country[1];
-        inTransaction(entityManager -> {
-            if (countryName == null || countryName.isEmpty()) {
-                System.out.println("Name cannot be empty or null");
-            }
-
-            TypedQuery<Country> query = entityManager.createQuery("SELECT c FROM Country c WHERE c.countryName = :name", Country.class);
-            query.setParameter("name", countryName);
-            List<Country> countries = query.getResultList();
-
-            if (countries.isEmpty()) {
-                System.out.println("Country not found");
-            }
-            else countryHolder[0] = countries.get(0);
-        });
-        return countryHolder[0];
-    }
-
-    public static void insertCountry(String countryName, String countryLanguage) {
+    @Override
+    public void insertOne(String countryName, String countryLanguage) {
         if (countryName == null || countryName.isEmpty()) {
             System.out.println("Name cannot be empty or null");
         }
@@ -78,7 +62,8 @@ public class CountrySql {
         });
 }
 
-    public static void updateCountry(String countryName, String countryLanguage) {
+    @Override
+    public void updateOne(String countryName, String countryLanguage) {
        try {
            inTransaction(entityManager -> {
                TypedQuery<Country> query = entityManager.createQuery(
@@ -100,5 +85,23 @@ public class CountrySql {
        }
     };
 
+    public static Country selectCountryAndReturn(String countryName) {
+        final Country[] countryHolder = new Country[1];
+        inTransaction(entityManager -> {
+            if (countryName == null || countryName.isEmpty()) {
+                System.out.println("Name cannot be empty or null");
+            }
+
+            TypedQuery<Country> query = entityManager.createQuery("SELECT c FROM Country c WHERE c.countryName = :name", Country.class);
+            query.setParameter("name", countryName);
+            List<Country> countries = query.getResultList();
+
+            if (countries.isEmpty()) {
+                System.out.println("Country not found");
+            }
+            else countryHolder[0] = countries.get(0);
+        });
+        return countryHolder[0];
+    }
 
 }
