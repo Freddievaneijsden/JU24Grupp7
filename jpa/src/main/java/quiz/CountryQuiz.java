@@ -6,8 +6,7 @@ import entity.Country;
 import java.util.Scanner;
 
 public class CountryQuiz implements Quiz {
-
-    Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
 
     @Override
     public void play() {
