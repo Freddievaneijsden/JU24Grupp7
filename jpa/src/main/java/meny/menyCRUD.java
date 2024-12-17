@@ -1,7 +1,5 @@
 package meny;
 
-import CRUD.CountrySql;
-
 import java.util.Scanner;
 
 public class menyCRUD {

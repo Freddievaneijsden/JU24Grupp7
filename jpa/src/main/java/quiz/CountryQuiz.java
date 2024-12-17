@@ -1,6 +1,6 @@
 package quiz;
 
-import CRUD.CountrySql;
+import CRUD.CountryCRUD;
 import entity.Country;
 
 import java.util.Scanner;
@@ -24,7 +24,7 @@ public class CountryQuiz implements Quiz {
 
         String correctCountry = "germany";
 
-        Country country = CountrySql.selectCountryAndReturn(questionOneAnswer);
+        Country country = CountryCRUD.selectCountryAndReturn(questionOneAnswer);
 
         if (country != null) {
             if (country.getCountryName().equalsIgnoreCase(correctCountry)) {
@@ -42,7 +42,7 @@ public class CountryQuiz implements Quiz {
 
         String correctCountry = "spain";
 
-        Country country = CountrySql.selectCountryAndReturn(questionTwoAnswer);
+        Country country = CountryCRUD.selectCountryAndReturn(questionTwoAnswer);
 
         if (country != null) {
             if (country.getCountryName().equalsIgnoreCase(correctCountry)) {
@@ -66,7 +66,7 @@ public class CountryQuiz implements Quiz {
 
         String correctCountry = "france";
 
-        Country country = CountrySql.selectCountryAndReturn(questionThreeAnswer);
+        Country country = CountryCRUD.selectCountryAndReturn(questionThreeAnswer);
 
         if (country != null) {
             if (country.getCountryName().equalsIgnoreCase(correctCountry)) {
@@ -85,7 +85,7 @@ public class CountryQuiz implements Quiz {
 
         String correctCountry = "finland";
 
-        Country country = CountrySql.selectCountryAndReturn(questionFourAnswer);
+        Country country = CountryCRUD.selectCountryAndReturn(questionFourAnswer);
 
         if (country != null) {
             if (country.getCountryName().equalsIgnoreCase(correctCountry)) {
@@ -103,7 +103,7 @@ public class CountryQuiz implements Quiz {
 
         String correctCountry = "egypt";
 
-        Country country = CountrySql.selectCountryAndReturn(questionFiveAnswer);
+        Country country = CountryCRUD.selectCountryAndReturn(questionFiveAnswer);
 
         if (country != null) {
             if (country.getCountryName().equalsIgnoreCase(correctCountry)) {
