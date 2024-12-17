@@ -1,30 +1,22 @@
 package CRUD;
 
 import entity.Country;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.TypedQuery;
 
 import java.util.List;
 
 import static util.JPAUtil.inTransaction;
 
-public class CountrySql implements Crudable{
+public class CountryCRUD implements Crudable{
+
 
     @Override
-    public void deleteOne(String countryName) {
+    public void selectAll() {
         inTransaction(entityManager -> {
-            TypedQuery<Country> query = entityManager.createQuery(
-                    "SELECT c FROM Country c WHERE c.countryName = :name", Country.class);
-            query.setParameter("name", countryName);
-            List<Country> countries = query.getResultList();
-
-            if (countries.isEmpty()) {
-                System.out.println("Country not found");
-            } else {
-                // Delete each country found (usually one if countryName is unique)
-                countries.forEach(entityManager::remove);
-                System.out.println("Deleted successfully: " + countryName);
+            TypedQuery<String> query = entityManager.createQuery("SELECT c.countryName FROM Country c", String.class);
+            List<String> countries = query.getResultList();
+            for (String countryName : countries) {
+                System.out.println(countryName);
             }
         });
     }
@@ -45,6 +37,24 @@ public class CountrySql implements Crudable{
                 System.out.println("Country not found");
             } else countries.forEach(System.out::println);
 
+        });
+    }
+
+    @Override
+    public void deleteOne(String countryName) {
+        inTransaction(entityManager -> {
+            TypedQuery<Country> query = entityManager.createQuery(
+                    "SELECT c FROM Country c WHERE c.countryName = :name", Country.class);
+            query.setParameter("name", countryName);
+            List<Country> countries = query.getResultList();
+
+            if (countries.isEmpty()) {
+                System.out.println("Country not found");
+            } else {
+                // Delete each country found (usually one if countryName is unique)
+                countries.forEach(entityManager::remove);
+                System.out.println("Deleted successfully: " + countryName);
+            }
         });
     }
 
