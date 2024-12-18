@@ -1,5 +1,6 @@
 use demo;
 
+-- CREATE TABLE
 create table country
 (
     country_id int not null auto_increment,
@@ -29,10 +30,19 @@ create table dish
     unique (dish_name)
 );
 
-drop table country;
-drop table celebrity;
-drop table dish;
+create table animal
+(
+    animal_id int not null auto_increment,
+    animal_name varchar(255) not null,
+    animal_country_id int,
+    primary key (animal_id),
+    foreign key (animal_country_id) references country (country_id),
+    unique (animal_name)
 
+);
+
+
+-- INSERT INTO
 insert into country (country_name, country_language)
 values ('Denmark', 'Danish'),
        ('Finland', 'Finnish'),
@@ -53,9 +63,6 @@ values ('Denmark', 'Danish'),
        ('France', 'French');
 
 
-insert into country (country_name, country_language)
-values ('Denmark', 'Danish');
-
 insert into celebrity (celebrity_name, celebrity_country_id)
 values ('Henrik Ibsen', 4),
        ('Viggo Mortensen', 1),
@@ -70,8 +77,6 @@ values ('Henrik Ibsen', 4),
        ('Park Seo-joon', 16),
        ('Napoleon Bonaparte', 17 );
 
-insert into celebrity (celebrity_name, celebrity_country_id)
-values ('Henrik Ibsen', 4);
 
 insert into dish (dish_name, dish_country_id)
 values ('Smørrebrød', 1),
@@ -92,11 +97,29 @@ values ('Smørrebrød', 1),
        ('Kimchi', 16),
        ('Ratatouille', 17);
 
-insert into dish (dish_name, dish_country_id)
-values ('Asado', 9);
+insert into animal(animal_name, animal_country_id)
+values ('Mute swan','1'),
+       ('Brown bear','2' ),
+       ('Gyrfalcon','3' ),
+       ('Eurasian elk','5' ),
+       ('Moose','4' ),
+       ('Bald eagle','6'),
+       ('American bison','6'),
+       ('Tiger',null),
+       ('Whale',null);
 
+-- UNIQUE TEST
+    insert into dish (dish_name, dish_country_id)
+    values ('Asado', 9);
 
+    insert into celebrity (celebrity_name, celebrity_country_id)
+    values ('Henrik Ibsen', 4);
 
+    insert into country (country_name, country_language)
+    values ('Denmark', 'Danish');
 
-
-
+-- DROP TABLE
+    drop table country;
+    drop table celebrity;
+    drop table dish;
+    drop table animal;
