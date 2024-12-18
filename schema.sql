@@ -95,7 +95,9 @@ values ('Smørrebrød', 1),
        ('Feijoada', 14),
        ('Koshari', 15),
        ('Kimchi', 16),
-       ('Ratatouille', 17);
+       ('Ratatouille', 17),
+       ('Black pudding', 5),
+       ('Pickled Herring', 5);
 
 insert into animal(animal_name, animal_country_id)
 values ('Mute swan','1'),

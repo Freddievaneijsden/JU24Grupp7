@@ -6,6 +6,7 @@
 
         <!-- listar klassen country som entitet, behövs för varje klass -->
         <class>entity.Country</class>
+        <class>entity.Dish</class>
         <class>entity.Animal</class>
 
         <properties>
