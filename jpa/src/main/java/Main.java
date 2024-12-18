@@ -21,9 +21,8 @@ public class Main {
                     3. Delete from database
                     4. Update from database
                     5. Select from database
-                    6. Select all from Country
-                    7. Statistics from database
-                    8. Exit
+                    6. Statistics from database
+                    7. Exit
                     """);
             input = scanner.nextLine();
             switch (input) {
@@ -32,9 +31,8 @@ public class Main {
                 case "3" -> menyCRUD.deleteMeny();
                 case "4" -> menyCRUD.updateMeny();
                 case "5" -> menyCRUD.selectMeny();
-                case "6" -> countryCrud.selectAll();
-                case "7" -> System.out.println("Statistics from database");
-                case "8" -> running = false;
+                case "6" -> System.out.println("Statistics from database");
+                case "7" -> running = false;
                 default -> System.out.println("Invalid input, please try again!");
             }
         }

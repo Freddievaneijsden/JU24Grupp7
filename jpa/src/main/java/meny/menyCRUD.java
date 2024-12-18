@@ -56,7 +56,11 @@ public class menyCRUD {
                 2. Animal
                 3. Celebrity
                 4. Dish
-                5. Select all dishes from country
+                5. Select all countries
+                6. Select all animals
+                7. Select all celebrities
+                8. Select all dishes
+                9. Select all dishes from country
                 """);
         input = scanner.nextLine();
         switch (input) {
@@ -64,7 +68,11 @@ public class menyCRUD {
             case "2" -> System.out.println("Enter animal name: ");
             case "3" -> System.out.println("Enter celebrity name: ");
             case "4" -> System.out.println("Enter dish name: ");
-            case "5" -> OneToMany.selectAllDishesFromCountry("Sweden");
+            case "5" -> System.out.println("Select all countries: ");
+            case "6" -> System.out.println("Select all animals: ");
+            case "7" -> System.out.println("Select all celebrities: ");
+            case "8" -> System.out.println("Select all dishes: ");
+            case "9" -> OneToMany.selectAllDishesFromCountry("Sweden");
             default -> System.out.println("Invalid input");
         }
     }
