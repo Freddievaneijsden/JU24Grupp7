@@ -1,20 +1,27 @@
 package quiz;
 
 import CRUD.CountryCRUD;
+import CRUD.LeaderboardCRUD;
 import entity.Country;
 
 import java.util.Scanner;
 
 public class CountryQuiz implements Quiz {
     private final Scanner scanner = new Scanner(System.in);
+    private int score = 0;
 
     @Override
     public void play() {
+        System.out.println("Enter your name: ");
+        String quizName = scanner.nextLine();
+        int countryQuiz = 1;
         questionOne();
         questionTwo();
         questionThree();
         questionFour();
         questionFive();
+        LeaderboardCRUD.insertOne(quizName, score, countryQuiz);
+        Result.showResult(quizName, score);
     }
 
     @Override
@@ -29,6 +36,7 @@ public class CountryQuiz implements Quiz {
         if (country != null) {
             if (country.getCountryName().equalsIgnoreCase(correctCountry)) {
                 System.out.println("Correct! " + country.getCountryName() + " has the largest population in the EU.");
+                score ++;
             } else {
                 System.out.println("Incorrect. The correct answer is " + correctCountry + ".");
             }
@@ -47,6 +55,7 @@ public class CountryQuiz implements Quiz {
         if (country != null) {
             if (country.getCountryName().equalsIgnoreCase(correctCountry)) {
                 System.out.println("Correct! " + country.getCountryName() + "´s national anthem is known as ‘The Royal March’");
+                score ++;
             } else {
                 System.out.println("Incorrect. The correct answer is " + correctCountry + ".");
             }
@@ -71,6 +80,7 @@ public class CountryQuiz implements Quiz {
         if (country != null) {
             if (country.getCountryName().equalsIgnoreCase(correctCountry)) {
                 System.out.println("Correct! " + country.getCountryName() + " is know as the Hexagon!");
+                score ++;
             } else {
                 System.out.println("Incorrect. The correct answer is " + correctCountry + ".");
             }
@@ -90,6 +100,7 @@ public class CountryQuiz implements Quiz {
         if (country != null) {
             if (country.getCountryName().equalsIgnoreCase(correctCountry)) {
                 System.out.println("Correct! " + country.getCountryName() + " is know as Land of a Thousand Lakes");
+                score ++;
             } else {
                 System.out.println("Incorrect. The correct answer is " + correctCountry + ".");
             }
@@ -108,6 +119,7 @@ public class CountryQuiz implements Quiz {
         if (country != null) {
             if (country.getCountryName().equalsIgnoreCase(correctCountry)) {
                 System.out.println("Correct! " + country.getCountryName() + " is famous for being home to the Great Pyramid of Giza and the Sphinx");
+                score ++;
             } else {
                 System.out.println("Incorrect. The correct answer is " + correctCountry + ".");
             }
