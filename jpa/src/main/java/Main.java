@@ -34,7 +34,7 @@ public class Main {
                 case "4" -> menyCRUD.updateMeny();
                 case "5" -> menyCRUD.selectMeny();
                 case "6" -> System.out.println("Statistics from database");
-                case "7" -> LeaderboardCRUD.selectAllAsc();
+                case "7" -> LeaderboardCRUD.selectAllDesc();
                 case "8" -> running = false;
                 default -> System.out.println("Invalid input, please try again!");
             }

@@ -36,9 +36,9 @@ public class LeaderboardCRUD {
         });
     }
 
-    public static void selectAllAsc() {
+    public static void selectAllDesc() {
         inTransaction(entityManager -> {
-            TypedQuery<Leaderboard> query = entityManager.createQuery("SELECT l FROM Leaderboard l ORDER BY l.leaderboardScore", Leaderboard.class);
+            TypedQuery<Leaderboard> query = entityManager.createQuery("SELECT l FROM Leaderboard l ORDER BY l.leaderboardScore DESC" , Leaderboard.class);
             List<Leaderboard> players = query.getResultList();
             for (int i = 0; i < players.size(); i++) {
                 System.out.println(i + 1 + ". " + players.get(i).getLeaderboardPlayer() + " | Score: " + players.get(i).getLeaderboardScore()
