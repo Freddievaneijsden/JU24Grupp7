@@ -90,7 +90,9 @@ values ('Smørrebrød', 1),
        ('Feijoada', 14),
        ('Koshari', 15),
        ('Kimchi', 16),
-       ('Ratatouille', 17);
+       ('Ratatouille', 17),
+       ('Black pudding', 5),
+       ('Pickled Herring', 5);
 
 insert into dish (dish_name, dish_country_id)
 values ('Asado', 9);

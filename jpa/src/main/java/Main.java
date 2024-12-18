@@ -28,10 +28,10 @@ public class Main {
             input = scanner.nextLine();
             switch (input) {
                 case "1" -> quiz.play();
-                case "2" -> menyCRUD.insertOneMeny();
-                case "3" -> menyCRUD.deleteOneMeny();
-                case "4" -> menyCRUD.updateOneMeny();
-                case "5" -> menyCRUD.selectOneMeny();
+                case "2" -> menyCRUD.insertMeny();
+                case "3" -> menyCRUD.deleteMeny();
+                case "4" -> menyCRUD.updateMeny();
+                case "5" -> menyCRUD.selectMeny();
                 case "6" -> countryCrud.selectAll();
                 case "7" -> System.out.println("Statistics from database");
                 case "8" -> running = false;
