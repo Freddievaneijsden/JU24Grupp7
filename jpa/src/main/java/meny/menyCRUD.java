@@ -1,5 +1,7 @@
 package meny;
 
+import CRUD.AnimalCRUD;
+import CRUD.CountryCRUD;
 import CRUD.OneToMany;
 
 import java.util.Scanner;
@@ -8,6 +10,8 @@ public class menyCRUD {
 
     private static String input;
     private static final Scanner scanner = new Scanner(System.in);
+    static CountryCRUD countryCrud = new CountryCRUD();
+    static AnimalCRUD animalCrud = new AnimalCRUD();
 
     public static void insertMeny() {
         System.out.println("Which table would you like to insert?");
@@ -20,7 +24,13 @@ public class menyCRUD {
         input = scanner.nextLine();
         switch (input) {
             case "1" -> System.out.println("Enter country name: ");
-            case "2" -> System.out.println("Enter animal name: ");
+            case "2" -> {
+                System.out.println("Enter animal name: ");
+                String animalName = scanner.nextLine();
+                System.out.println("Enter country name: ");
+                String countryName = scanner.nextLine();
+                animalCrud.insertOne(animalName, countryName);
+            }
             case "3" -> System.out.println("Enter celebrity name: ");
             case "4" -> System.out.println("Enter dish name: ");
             default -> System.out.println("Invalid input");
@@ -40,7 +50,13 @@ public class menyCRUD {
         input = scanner.nextLine();
         switch (input) {
             case "1" -> System.out.println("Enter country name: ");
-            case "2" -> System.out.println("Enter animal name: ");
+            case "2" -> {
+                System.out.println("Enter animal name: ");
+                String animalName = scanner.nextLine();
+                System.out.println("Enter new country name: ");
+                String newCountryName = scanner.nextLine();
+                animalCrud.updateOne(animalName, newCountryName);
+            }
             case "3" -> System.out.println("Enter celebrity name: ");
             case "4" -> System.out.println("Enter dish name: ");
             default -> System.out.println("Invalid input");
@@ -68,8 +84,8 @@ public class menyCRUD {
             case "2" -> System.out.println("Enter animal name: ");
             case "3" -> System.out.println("Enter celebrity name: ");
             case "4" -> System.out.println("Enter dish name: ");
-            case "5" -> System.out.println("Select all countries: ");
-            case "6" -> System.out.println("Select all animals: ");
+            case "5" -> countryCrud.selectAll();
+            case "6" -> animalCrud.selectAll();
             case "7" -> System.out.println("Select all celebrities: ");
             case "8" -> System.out.println("Select all dishes: ");
             case "9" -> OneToMany.selectAllDishesFromCountry("Sweden");
