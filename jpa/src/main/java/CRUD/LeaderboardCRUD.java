@@ -10,8 +10,7 @@ import static util.JPAUtil.inTransaction;
 
 public class LeaderboardCRUD {
 
-
-    public void selectAll() {
+    public static void selectAll() {
         inTransaction(entityManager -> {
             TypedQuery<Leaderboard> query = entityManager.createQuery("SELECT l FROM Leaderboard l", Leaderboard.class);
             List<Leaderboard> players = query.getResultList();
@@ -22,7 +21,7 @@ public class LeaderboardCRUD {
         });
     }
 
-    public void insertOne(String player, int score, int quizType) {
+    public static  void insertOne(String player, int score, int quizType) {
         if (player == null || player.isEmpty()) {
             System.out.println("Name cannot be empty or null");
         }
@@ -37,7 +36,7 @@ public class LeaderboardCRUD {
         });
     }
 
-    public void selectAllAsc() {
+    public static void selectAllAsc() {
         inTransaction(entityManager -> {
             TypedQuery<Leaderboard> query = entityManager.createQuery("SELECT l FROM Leaderboard l ORDER BY l.leaderboardScore", Leaderboard.class);
             List<Leaderboard> players = query.getResultList();

@@ -1,4 +1,5 @@
 import CRUD.CountryCRUD;
+import CRUD.LeaderboardCRUD;
 import meny.menyCRUD;
 import quiz.CountryQuiz;
 
@@ -9,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         CountryQuiz quiz = new CountryQuiz();
-        CountryCRUD countryCrud = new CountryCRUD();
+
 
         boolean running = true;
         String input = "";
@@ -22,7 +23,8 @@ public class Main {
                     4. Update from database
                     5. Select from database
                     6. Statistics from database
-                    7. Exit
+                    7. Leaderboard 
+                    8. Exit
                     """);
             input = scanner.nextLine();
             switch (input) {
@@ -32,7 +34,8 @@ public class Main {
                 case "4" -> menyCRUD.updateMeny();
                 case "5" -> menyCRUD.selectMeny();
                 case "6" -> System.out.println("Statistics from database");
-                case "7" -> running = false;
+                case "7" -> LeaderboardCRUD.selectAllAsc();
+                case "8" -> running = false;
                 default -> System.out.println("Invalid input, please try again!");
             }
         }
