@@ -8,6 +8,7 @@
         <class>entity.Country</class>
         <class>entity.Dish</class>
         <class>entity.Animal</class>
+        <class>entity.Leaderboard</class>
 
         <properties>
             <!-- Database connection settings -->

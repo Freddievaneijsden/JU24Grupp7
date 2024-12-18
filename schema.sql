@@ -41,6 +41,14 @@ create table animal
 
 );
 
+create table leaderboard (
+    leaderboard_id int not null auto_increment,
+    leaderboard_player varchar(255) not null,
+    leaderboard_score int not null,
+    leaderboard_quiz_type int not null,
+    primary key (leaderboard_id)
+);
+
 
 -- INSERT INTO
 insert into country (country_name, country_language)
@@ -125,3 +133,4 @@ values ('Mute swan','1'),
     drop table celebrity;
     drop table dish;
     drop table animal;
+    drop table leaderboard;
