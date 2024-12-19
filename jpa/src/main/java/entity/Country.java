@@ -25,12 +25,12 @@ public class Country {
 
     public void addDish(Dish dish) {
         dishes.add(dish);
-        dish.setCountry(this); // Set the country reference in Dish
+        dish.setDishCountry(this); // Set the country reference in Dish
     }
 
     public void removeDish(Dish dish) {
         dishes.remove(dish);
-        dish.setCountry(null); // Break the relationship
+        dish.setDishCountry(null); // Break the relationship
     }
 
     public List<Dish> getDishes() {
