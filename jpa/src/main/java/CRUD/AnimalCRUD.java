@@ -13,13 +13,9 @@ public class AnimalCRUD implements Crudable {
     @Override
     public void selectAll() {
         inTransaction(entityManager -> {
-            TypedQuery<String> query = entityManager.createQuery("SELECT c.animalName FROM Animal c", String.class);
-            List<String> animals = query.getResultList();
-            System.out.println("All animals: ");
-            for (String animalNames : animals) {
-                System.out.println(animalNames);
-            }
-            System.out.println();
+            TypedQuery<Animal> query = entityManager.createQuery("SELECT c FROM Animal c", Animal.class);
+            List<Animal> animals = query.getResultList();
+            animals.forEach(System.out::println);
         });
     }
 
@@ -33,11 +29,11 @@ public class AnimalCRUD implements Crudable {
 
             TypedQuery<Animal> query = entityManager.createQuery("SELECT c FROM Animal c WHERE c.animalName = :name", Animal.class);
             query.setParameter("name", animalName);
-            List<Animal> countries = query.getResultList();
+            List<Animal> animals = query.getResultList();
 
-            if (countries.isEmpty()) {
+            if (animals.isEmpty()) {
                 System.out.println("Animal not found");
-            } else countries.forEach(System.out::println);
+            } else animals.forEach(System.out::println);
 
         });
     }

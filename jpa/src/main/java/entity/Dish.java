@@ -15,7 +15,7 @@ public class Dish {
 
     @ManyToOne
     @JoinColumn(name = "dish_country_id", nullable = false)
-    private Country country;
+    private Country dishCountry;
 
     public int getDishId() {
         return dishId;
@@ -33,11 +33,11 @@ public class Dish {
         this.dishName = dishName;
     }
 
-    public Country getCountry() {
-        return country;
+    public Country getDishCountry() {
+        return dishCountry;
     }
 
-    public void setCountry(Country country) {
-        this.country = country;
+    public void setDishCountry(Country country) {
+        this.dishCountry = country;
     }
 }

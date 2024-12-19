@@ -17,7 +17,7 @@ public class OneToMany {
                 return;
             }
 
-            TypedQuery<Dish> query = entityManager.createQuery("SELECT d FROM Dish d WHERE d.country.countryName = LOWER(:name)", Dish.class);
+            TypedQuery<Dish> query = entityManager.createQuery("SELECT d FROM Dish d WHERE d.dishCountry.countryName = LOWER(:name)", Dish.class);
             query.setParameter("name", countryName.toLowerCase());
             List<Dish> dishes = query.getResultList();
 
