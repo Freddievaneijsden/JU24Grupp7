@@ -72,7 +72,7 @@ public class DishCRUD implements Crudable{
 
                 Dish dish = new Dish();
                 dish.setDishName(dishName);
-                dish.setDishCountry(country);
+                dish.setCountry(country);
                 entityManager.persist(dish);
                 System.out.println("Inserted successfully: " + dishName);
 
@@ -88,7 +88,7 @@ public class DishCRUD implements Crudable{
         try {
             inTransaction(entityManager -> {
                 Query query = entityManager.createQuery(
-                        "UPDATE Dish a SET a.dishCountry = (SELECT c FROM Country c WHERE c.countryName = :countryName) WHERE a.dishName = :name"
+                        "UPDATE Dish a SET a.country = (SELECT c FROM Country c WHERE c.countryName = :countryName) WHERE a.dishName = :name"
                 );
                 query.setParameter("countryName", countryName);
                 query.setParameter("name", dishName);

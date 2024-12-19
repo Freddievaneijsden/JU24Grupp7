@@ -9,6 +9,7 @@
         <class>entity.Dish</class>
         <class>entity.Animal</class>
         <class>entity.Leaderboard</class>
+        <class>entity.Celebrity</class>
 
         <properties>
             <!-- Database connection settings -->
