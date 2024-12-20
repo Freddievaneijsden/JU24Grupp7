@@ -25,20 +25,16 @@ public class CelebrityQuiz implements Quiz {
     public void questionOne() {
         System.out.println("1. Which country is Ronaldo from?");
         System.out.print("Your answer: ");
-        String questionOneAnswer = scanner.nextLine().trim().toLowerCase();
+        String questionOneAnswer = scanner.nextLine().trim().toLowerCase(); // Användarens svar
 
-        String correctCelebrity = "portugal";
-        Celebrity celebrity = CelebrityCRUD.selectCelebrityAndReturn(questionOneAnswer);
+        String correctCountry = "portugal"; // Det förväntade korrekta svaret
 
-        if (celebrity != null) {
-            if (celebrity.getCelebrityName().equalsIgnoreCase(correctCelebrity)) {
-                System.out.println("Correct! " + celebrity.getCelebrityName() + " is where Ronaldo's from " + correctCelebrity + ".");
-                score++;
-            } else {
-                System.out.println("Incorrect. The correct answer is " + correctCelebrity + ".");
-            }
+        // Kontrollera om svaret matchar direkt utan att bero på databasen
+        if (questionOneAnswer.equals(correctCountry)) {
+            System.out.println("Correct! Ronaldo is from " + correctCountry + ".");
+            score++; // Öka poängen om svaret är korrekt
         } else {
-            System.out.println("Incorrect. The correct answer is " + correctCelebrity + ".");
+            System.out.println("Incorrect. The correct answer is " + correctCountry + ".");
         }
     }
 
@@ -69,18 +65,13 @@ public class CelebrityQuiz implements Quiz {
         System.out.print("Your answer: ");
         String questionThreeAnswer = scanner.nextLine().trim().toLowerCase();
 
-        String correctCelebrity = "the mask";
-        Celebrity celebrity = CelebrityCRUD.selectCelebrityAndReturn(questionThreeAnswer);
+        String correctMovie = "the mask";
 
-        if (celebrity != null) {
-            if (celebrity.getCelebrityName().equalsIgnoreCase(correctCelebrity)) {
-                System.out.println("Correct! Cameron Diaz is most known for " + correctCelebrity + ".");
-                score++;
-            } else {
-                System.out.println("Incorrect. The correct answer is " + correctCelebrity + ".");
-            }
+        if (questionThreeAnswer.equals(correctMovie)) {
+            System.out.println("Correct! Cameron Diaz is most known for " + correctMovie + ".");
+            score++;
         } else {
-            System.out.println("Incorrect. The correct answer is " + correctCelebrity + ".");
+            System.out.println("Incorrect. The correct answer is " + correctMovie + ".");
         }
     }
 
@@ -90,18 +81,13 @@ public class CelebrityQuiz implements Quiz {
         System.out.print("Your answer: ");
         String questionFourAnswer = scanner.nextLine().trim().toLowerCase();
 
-        String correctCelebrity = "italy";
-        Celebrity celebrity = CelebrityCRUD.selectCelebrityAndReturn(questionFourAnswer);
-
-        if (celebrity != null) {
-            if (celebrity.getCelebrityName().equalsIgnoreCase(correctCelebrity)) {
-                System.out.println("Correct! Napoloen's first country he invaded was " + correctCelebrity + ".");
-                score++;
-            } else {
-                System.out.println("Incorrect. The correct answer is " + correctCelebrity + ".");
-            }
+        String correctCountry = "italy";
+        // Eftersom 'invadedCountries' inte finns i Celebrity-entiteten, jämför direkt
+        if (questionFourAnswer.equals(correctCountry)) {
+            System.out.println("Correct! Napoleon's first country he invaded was " + correctCountry + ".");
+            score++;
         } else {
-            System.out.println("Incorrect. The correct answer is " + correctCelebrity + ".");
+            System.out.println("Incorrect. The correct answer is " + correctCountry + ".");
         }
     }
 
@@ -111,18 +97,13 @@ public class CelebrityQuiz implements Quiz {
         System.out.print("Your answer: ");
         String questionFiveAnswer = scanner.nextLine().trim().toLowerCase();
 
-        String correctCelebrity = "john abruzzi";
-        Celebrity celebrity = CelebrityCRUD.selectCelebrityAndReturn(questionFiveAnswer);
+        String correctCharacter = "john abruzzi";
 
-        if (celebrity != null) {
-            if (celebrity.getCelebrityName().equalsIgnoreCase(correctCelebrity)) {
-                System.out.println("Correct! John Stormare's most iconic character is " + correctCelebrity + ".");
-                score++;
-            } else {
-                System.out.println("Incorrect. The correct answer is " + correctCelebrity + ".");
-            }
+        if (questionFiveAnswer.equals(correctCharacter)) {
+            System.out.println("Correct! John Stormare's most iconic character is " + correctCharacter + ".");
+            score++;
         } else {
-            System.out.println("Incorrect. The correct answer is " + correctCelebrity + ".");
+            System.out.println("Incorrect. The correct answer is " + correctCharacter + ".");
         }
     }
 }
