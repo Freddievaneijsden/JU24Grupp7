@@ -106,27 +106,6 @@ public class AnimalCRUD implements Crudable {
         }
     }
 
-    public static Animal selectAnimalAndReturn(String animalName) {
-        final Animal[] animalHolder = new Animal[1];
-        try {
-            inTransaction(entityManager -> {
-                if (animalName == null || animalName.isEmpty()) {
-                    System.out.println("Name cannot be empty or null");
-                    return;
-                }
-
-                TypedQuery<Animal> query = entityManager.createQuery(
-                        "SELECT a FROM Animal a WHERE a.animalName = :name", Animal.class);
-                query.setParameter("name", animalName);
-
-                animalHolder[0] = query.getSingleResult();
-            });
-        } catch (Exception e) {
-            System.out.println("An error occurred while fetching the animal: " + e.getMessage());
-        }
-        return animalHolder[0];
-    }
-
     public static List<Animals> getAnimals() {
         List<Animals> animals = new ArrayList<>();
         try {
@@ -134,13 +113,21 @@ public class AnimalCRUD implements Crudable {
                 TypedQuery query = entityManager.createQuery("SELECT a FROM Animal a", Animal.class);
                 List <Animal> animalList = query.getResultList();
                 animalList.forEach(animal -> {animals.add(new Animals(animal.getAnimalName(),
-                        animal.getAnimalCountry().getCountryName(),
+                        countryName(animal),
                         animal.getAnimalQuiz()));});
             });
         } catch (Exception e) {
             System.out.println("An error occurred while fetching the animals: " + e.getMessage());
         }
         return animals;
+    }
+
+    public static String countryName (Animal animal) {
+        if (animal.getAnimalCountry() == null) {
+            return null;
+        } else {
+            return animal.getAnimalCountry().getCountryName();
+        }
     }
 
     public static class Animals {
