@@ -1,21 +1,19 @@
 package meny;
 
-import CRUD.AnimalCRUD;
-import CRUD.CountryCRUD;
-import CRUD.DishCRUD;
-import CRUD.OneToMany;
+import CRUD.*;
 
 import java.util.Scanner;
 
-public class menyCRUD {
+public class MenyCRUD {
 
     private static String input;
     private static final Scanner scanner = new Scanner(System.in);
-    static CountryCRUD countryCrud = new CountryCRUD();
-    static AnimalCRUD animalCrud = new AnimalCRUD();
-    static DishCRUD dishCrud = new DishCRUD();
+    private final CountryCRUD countryCrud = new CountryCRUD();
+    private final AnimalCRUD animalCrud = new AnimalCRUD();
+    private final CelebrityCRUD celebrityCrud = new CelebrityCRUD();
+    private final DishCRUD dishCrud = new DishCRUD();
 
-    public static void insertMeny() {
+    public void insertMeny() {
         System.out.println("Which table would you like to insert?");
         System.out.println("""
                 1. Country
@@ -30,7 +28,7 @@ public class menyCRUD {
                 String countryName = scanner.nextLine();
                 System.out.println("Enter language ");
                 String language = scanner.nextLine();
-                dishCrud.insertOne(countryName, language);
+                countryCrud.insertOne(countryName, language);
             }
             case "2" -> {
                 System.out.println("Enter animal name: ");
@@ -39,7 +37,13 @@ public class menyCRUD {
                 String countryName = scanner.nextLine();
                 animalCrud.insertOne(animalName, countryName);
             }
-            case "3" -> System.out.println("Enter celebrity name: ");
+            case "3" -> {
+                System.out.println("Enter celebrity name: ");
+                String celebrityName = scanner.nextLine();
+                System.out.println("Enter new country name: ");
+                String newCountryName = scanner.nextLine();
+                celebrityCrud.insertOne(celebrityName, newCountryName);
+            }
             case "4" -> {
                 System.out.println("Enter dish name: ");
                 String dishName = scanner.nextLine();
@@ -53,7 +57,7 @@ public class menyCRUD {
 
     }
 
-    public static void updateMeny() {
+    public void updateMeny() {
         System.out.println("From which table would you like to update?");
         System.out.println("""
                 1. Country
@@ -63,7 +67,14 @@ public class menyCRUD {
                 """);
         input = scanner.nextLine();
         switch (input) {
-            case "1" -> System.out.println("Enter country name: ");
+            case "1" ->  {
+            System.out.println("Enter country name: ");
+            String countryName = scanner.nextLine();
+            System.out.println("Enter language ");
+            String language = scanner.nextLine();
+            countryCrud.updateOne(countryName, language);
+            }
+
             case "2" -> {
                 System.out.println("Enter animal name: ");
                 String animalName = scanner.nextLine();
@@ -71,7 +82,13 @@ public class menyCRUD {
                 String newCountryName = scanner.nextLine();
                 animalCrud.updateOne(animalName, newCountryName);
             }
-            case "3" -> System.out.println("Enter celebrity name: ");
+            case "3" -> {
+                System.out.println("Enter celebrity name: ");
+                String celebrityName = scanner.nextLine();
+                System.out.println("Enter new country name: ");
+                String newCountryName = scanner.nextLine();
+                celebrityCrud.updateOne(celebrityName, newCountryName);
+            }
             case "4" -> System.out.println("Enter dish name: ");
             default -> System.out.println("Invalid input");
         }
@@ -79,7 +96,7 @@ public class menyCRUD {
 
     }
 
-    public static void selectMeny() {
+    public void selectMeny() {
         System.out.println("From which table would you like to select?");
         System.out.println("""
                 1. Country
@@ -105,7 +122,11 @@ public class menyCRUD {
                 String animalName = scanner.nextLine();
                 animalCrud.selectOne(animalName);
             }
-            case "3" -> System.out.println("Enter celebrity name: ");
+            case "3" -> {
+                System.out.println("Enter celebrity name: ");
+                String celebrityName = scanner.nextLine();
+                celebrityCrud.selectOne(celebrityName);
+            }
             case "4" -> {
                 System.out.println("Enter dish name: ");
                 String dishName = scanner.nextLine();
@@ -113,7 +134,7 @@ public class menyCRUD {
             }
             case "5" -> countryCrud.selectAll();
             case "6" -> animalCrud.selectAll();
-            case "7" -> System.out.println("Select all celebrities: ");
+            case "7" -> celebrityCrud.selectAll();
             case "8" -> dishCrud.selectAll();
             case "9" -> OneToMany.selectAllDishesFromCountry("Sweden");
             case "10" -> OneToMany.selectAllCelebritiesFromCountry("United States");
@@ -121,7 +142,7 @@ public class menyCRUD {
         }
     }
 
-    public static void deleteMeny() {
+    public void deleteMeny() {
         System.out.println("From which table would you like to delete?");
         System.out.println("""
                 1. Country
@@ -141,7 +162,11 @@ public class menyCRUD {
                 String animalName = scanner.nextLine();
                 animalCrud.deleteOne(animalName);
             }
-            case "3" -> System.out.println("Enter celebrity name: ");
+            case "3" -> {
+                System.out.println("Enter celebrity name: ");
+                String celebrityName = scanner.nextLine();
+                celebrityCrud.deleteOne(celebrityName);
+            }
             case "4" -> {
                 System.out.println("Enter dish name: ");
                 String dishName = scanner.nextLine();
