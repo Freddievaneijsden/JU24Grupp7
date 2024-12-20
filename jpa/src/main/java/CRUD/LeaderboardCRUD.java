@@ -47,7 +47,14 @@ public class LeaderboardCRUD {
         });
     }
 
+    public static void showNumberElementsInLeaderboard() {
+        inTransaction(entityManager -> {
+            TypedQuery<Long> query = entityManager.createQuery("SELECT COUNT(l.leaderboardPlayer) FROM Leaderboard l" , Long.class);
+                           var numberOfPlayers = query.getSingleResult();
+            System.out.println("Number of players on leaderboard: " + numberOfPlayers);
+        });
 
+    }
 }
 
 
