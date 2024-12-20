@@ -12,6 +12,7 @@ public class CountryQuiz  {
 
 
     public void play() {
+        System.out.println("Welcome to the Country Quiz!");
         System.out.println("Enter your name: ");
         String quizName = scanner.nextLine();
         int countryQuiz = 1;
