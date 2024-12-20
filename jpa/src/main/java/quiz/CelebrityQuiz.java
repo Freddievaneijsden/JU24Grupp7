@@ -21,7 +21,6 @@ public class CelebrityQuiz implements Quiz {
         System.out.println("\nQuiz complete! Your total score: " + score + "/5");
     }
 
-    @Override
     public void questionOne() {
         System.out.println("1. Which country is Ronaldo from?");
         System.out.print("Your answer: ");
@@ -42,7 +41,7 @@ public class CelebrityQuiz implements Quiz {
         }
     }
 
-    @Override
+
     public void questionTwo() {
         System.out.println("2. Which celebrity portrayed Joel in the TV series The Last of Us?");
         System.out.print("Your answer: ");
@@ -63,7 +62,7 @@ public class CelebrityQuiz implements Quiz {
         }
     }
 
-    @Override
+
     public void questionThree() {
         System.out.println("3. Which movie is Cameron Diaz most known for?");
         System.out.print("Your answer: ");
@@ -84,7 +83,6 @@ public class CelebrityQuiz implements Quiz {
         }
     }
 
-    @Override
     public void questionFour() {
         System.out.println("4. Which country did Napoleon invade first?");
         System.out.print("Your answer: ");
@@ -105,7 +103,7 @@ public class CelebrityQuiz implements Quiz {
         }
     }
 
-    @Override
+
     public void questionFive() {
         System.out.println("5. Who is John Stormare's most iconic character?");
         System.out.print("Your answer: ");

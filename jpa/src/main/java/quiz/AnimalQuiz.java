@@ -16,6 +16,7 @@ public class AnimalQuiz implements Quiz { ;
     public void play() {
         System.out.println("Enter your name: ");
         String quizName = scanner.nextLine();
+        int animalQuiz = 1;
         List<AnimalCRUD.Animals> animals = AnimalCRUD.getAnimals();
         if (animals == null) {
             return;
@@ -31,6 +32,9 @@ public class AnimalQuiz implements Quiz { ;
             }
             animals.remove(question);
         }
+
+        LeaderboardCRUD.insertOne(quizName, score, animalQuiz);
+        Result.showResult(quizName, score);
     }
 
     private void quizFromCountryField(AnimalCRUD.Animals animal) {
@@ -39,6 +43,8 @@ public class AnimalQuiz implements Quiz { ;
         if (input.equalsIgnoreCase(animal.getAnimalCountry())) {
             System.out.println("Correct");
             score++;
+        } else {
+            System.out.println("Incorrect, the answer is " + animal.getAnimalCountry());
         }
     }
 
@@ -51,31 +57,6 @@ public class AnimalQuiz implements Quiz { ;
         } else {
             System.out.println("Incorrect, the answer is: " + animal.getAnimalName());
         }
-
-    }
-
-    @Override
-    public void questionOne() {
-
-    }
-
-    @Override
-    public void questionTwo() {
-
-    }
-
-    @Override
-    public void questionThree() {
-
-    }
-
-    @Override
-    public void questionFour() {
-
-    }
-
-    @Override
-    public void questionFive() {
 
     }
 }
