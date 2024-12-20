@@ -91,6 +91,7 @@ public class menyCRUD {
                 7. Select all celebrities
                 8. Select all dishes
                 9. Select all dishes from country
+                10. Select all celebrities from country 
                 """);
         input = scanner.nextLine();
         switch (input) {
@@ -115,6 +116,7 @@ public class menyCRUD {
             case "7" -> System.out.println("Select all celebrities: ");
             case "8" -> dishCrud.selectAll();
             case "9" -> OneToMany.selectAllDishesFromCountry("Sweden");
+            case "10" -> OneToMany.selectAllCelebritiesFromCountry("United States");
             default -> System.out.println("Invalid input");
         }
     }

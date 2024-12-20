@@ -15,7 +15,7 @@ public class Celebrity {
     private String celebrityName;
 
     @ManyToOne
-    @JoinColumn(name = "country_id", nullable = false)
+    @JoinColumn(name = "celebrity_country_id", nullable = false)
     private Country country;
 
     // Constructors, getters, setters, and toString()

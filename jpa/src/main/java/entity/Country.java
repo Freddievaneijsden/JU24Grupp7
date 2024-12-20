@@ -23,6 +23,9 @@ public class Country {
     @OneToMany(mappedBy = "country")
     private List<Dish> dishes = new ArrayList<>();
 
+    @OneToMany(mappedBy = "country")
+    private List<Dish> celebrities = new ArrayList<>();
+
     public void addDish(Dish dish) {
         dishes.add(dish);
         dish.setCountry(this); // Set the country reference in Dish
@@ -39,6 +42,14 @@ public class Country {
 
     public void setDishes(List<Dish> dishes) {
         this.dishes = dishes;
+    }
+
+    public List<Dish> getCelebrities() {
+        return celebrities;
+    }
+
+    public void setCelebrities(List<Dish> celebrities) {
+        this.celebrities = celebrities;
     }
 
     public int getCountryId() {
