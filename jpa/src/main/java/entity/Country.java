@@ -20,7 +20,7 @@ public class Country {
     @Column(name = "country_language")
     private String countryLanguage;
 
-    @OneToMany(mappedBy = "country")
+    @OneToMany(mappedBy = "dishCountry")
     private List<Dish> dishes = new ArrayList<>();
 
     public void addDish(Dish dish) {

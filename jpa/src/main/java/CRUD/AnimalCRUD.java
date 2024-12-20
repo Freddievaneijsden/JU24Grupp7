@@ -4,6 +4,7 @@ import entity.Country;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static util.JPAUtil.inTransaction;
@@ -126,4 +127,53 @@ public class AnimalCRUD implements Crudable {
         return animalHolder[0];
     }
 
+    public static List<Animals> getAnimals() {
+        List<Animals> animals = new ArrayList<>();
+        try {
+            inTransaction(entityManager -> {
+                TypedQuery query = entityManager.createQuery("SELECT a FROM Animal a", Animal.class);
+                List <Animal> animalList = query.getResultList();
+                animalList.forEach(animal -> {animals.add(new Animals(animal.getAnimalName(),
+                        animal.getAnimalCountry().getCountryName(),
+                        animal.getAnimalQuiz()));});
+            });
+        } catch (Exception e) {
+            System.out.println("An error occurred while fetching the animals: " + e.getMessage());
+        }
+        return animals;
+    }
+
+    public static class Animals {
+        private String animalName;
+        private String animalCountry;
+        private String animalQuiz;
+
+        public Animals(String animalName, String animalCountry, String animalQuiz) {
+            this.animalName = animalName;
+            this.animalCountry = animalCountry;
+            this.animalQuiz = animalQuiz;
+        }
+
+        public String getAnimalCountry() {
+            return animalCountry;
+        }
+
+        public String getAnimalQuiz() {
+            return animalQuiz;
+        }
+
+        @Override
+        public String toString() {
+            return "Animals{" +
+                    "animalName='" + animalName + '\'' +
+                    ", animalCountry='" + animalCountry + '\'' +
+                    ", animalQuiz='" + animalQuiz + '\'' +
+                    '}';
+        }
+
+        public String getAnimalName() {
+            return animalName;
+        }
+
+    }
 }

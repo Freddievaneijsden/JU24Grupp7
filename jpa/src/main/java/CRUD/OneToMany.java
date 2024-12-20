@@ -1,6 +1,5 @@
 package CRUD;
 
-import entity.Country;
 import entity.Dish;
 import jakarta.persistence.TypedQuery;
 
