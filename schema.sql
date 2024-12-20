@@ -136,3 +136,4 @@ values ('Mute swan','1',null),
     drop table dish;
     drop table animal;
     drop table leaderboard;
+

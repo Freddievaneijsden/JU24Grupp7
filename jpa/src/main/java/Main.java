@@ -37,7 +37,7 @@ public class Main {
                 case "4" -> menyCRUD.deleteMeny();
                 case "5" -> menyCRUD.updateMeny();
                 case "6" -> menyCRUD.selectMeny();
-                case "7" -> System.out.println("Statistics from database");
+                case "7" -> LeaderboardCRUD.showNumberElementsInLeaderboard();
                 case "8" -> running = false;
                 default -> System.out.println("Invalid input, please try again!");
             }
