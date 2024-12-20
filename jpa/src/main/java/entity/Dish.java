@@ -40,16 +40,12 @@ public class Dish {
         this.country = country;
     }
 
-    public void setDishCountry(Country dishCountry) {
-        this.dishCountry = dishCountry;
-      
     @Override
     public String toString() {
         return "Dish{" +
-                "dishId=" + dishId +
+                "id=" + id +
                 ", dishName='" + dishName + '\'' +
                 ", country=" + country +
                 '}';
     }
-
 }
