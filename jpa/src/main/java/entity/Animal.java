@@ -17,6 +17,17 @@ public class Animal {
     @JoinColumn(name = "animal_country_id")
     private Country animalCountry;
 
+    @Column(name = "animal_quiz", length = 225)
+    private String animalQuiz;
+
+    public String getAnimalQuiz() {
+        return animalQuiz;
+    }
+
+    public void setAnimalQuiz(String animalQuiz) {
+        this.animalQuiz = animalQuiz;
+    }
+
     public Integer getId() {
         return id;
     }

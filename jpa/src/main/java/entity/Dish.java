@@ -8,21 +8,21 @@ public class Dish {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "dish_id", nullable = false)
-    private int dishId;
+    private Integer id;
 
-    @Column(name = "dish_name")
+    @Column(name = "dish_name", nullable = false)
     private String dishName;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "dish_country_id", nullable = false)
     private Country country;
 
-    public int getDishId() {
-        return dishId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setDishId(int dishId) {
-        this.dishId = dishId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getDishName() {
@@ -40,6 +40,9 @@ public class Dish {
         this.country = country;
     }
 
+    public void setDishCountry(Country dishCountry) {
+        this.dishCountry = dishCountry;
+      
     @Override
     public String toString() {
         return "Dish{" +
@@ -48,4 +51,5 @@ public class Dish {
                 ", country=" + country +
                 '}';
     }
+
 }

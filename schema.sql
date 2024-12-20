@@ -34,6 +34,7 @@ create table animal
 (
     animal_id int not null auto_increment,
     animal_name varchar(255) not null,
+    animal_quiz varchar(225),
     animal_country_id int,
     primary key (animal_id),
     foreign key (animal_country_id) references country (country_id),
@@ -108,16 +109,16 @@ values ('Smørrebrød', 1),
        ('Black pudding', 5),
        ('Pickled Herring', 5);
 
-insert into animal(animal_name, animal_country_id)
-values ('Mute swan','1'),
-       ('Brown bear','2' ),
-       ('Gyrfalcon','3' ),
-       ('Eurasian elk','5' ),
-       ('Moose','4' ),
-       ('Bald eagle','6'),
-       ('American bison','6'),
-       ('Tiger',null),
-       ('Whale',null);
+insert into animal(animal_name, animal_country_id, animal_quiz)
+values ('Mute swan','1',null),
+       ('Brown bear','2',null),
+       ('Gyrfalcon','3',null),
+       ('Eurasian elk','5',null),
+       ('Moose','4',null),
+       ('Bald eagle','6',null),
+       ('American bison','6',null),
+       ('Tiger',null,'What is the largest cat animal in the world?'),
+       ('Whale',null,'What is the largest mammal in the world?');
 
 -- UNIQUE TEST
     insert into dish (dish_name, dish_country_id)
