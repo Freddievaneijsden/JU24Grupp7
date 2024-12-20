@@ -15,7 +15,7 @@ public class Dish {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "dish_country_id", nullable = false)
-    private Country dishCountry;
+    private Country country;
 
     public Integer getId() {
         return id;
@@ -33,12 +33,23 @@ public class Dish {
         this.dishName = dishName;
     }
 
-    public Country getDishCountry() {
-        return dishCountry;
+    public Country getCountry() {
+        return country;
+    }
+    public void setCountry(Country country) {
+        this.country = country;
     }
 
     public void setDishCountry(Country dishCountry) {
         this.dishCountry = dishCountry;
+      
+    @Override
+    public String toString() {
+        return "Dish{" +
+                "dishId=" + dishId +
+                ", dishName='" + dishName + '\'' +
+                ", country=" + country +
+                '}';
     }
 
 }

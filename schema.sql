@@ -84,7 +84,8 @@ values ('Henrik Ibsen', 4),
        ('Ronaldo', 14),
        ('Tutankhamun', 15),
        ('Park Seo-joon', 16),
-       ('Napoleon Bonaparte', 17 );
+       ('Napoleon Bonaparte', 17 ),
+       ('Donald Trump', 6);
 
 
 insert into dish (dish_name, dish_country_id)
