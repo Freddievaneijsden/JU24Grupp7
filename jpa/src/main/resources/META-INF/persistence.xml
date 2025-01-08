@@ -10,6 +10,7 @@
         <class>entity.Animal</class>
         <class>entity.Leaderboard</class>
         <class>entity.Celebrity</class>
+        <class>entity.QuizType</class>
 
         <properties>
             <!-- Database connection settings -->

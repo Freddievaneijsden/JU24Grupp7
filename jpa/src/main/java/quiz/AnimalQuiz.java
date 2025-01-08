@@ -16,7 +16,7 @@ public class AnimalQuiz implements Quiz { ;
     public void play() {
         System.out.println("Enter your name: ");
         String quizName = scanner.nextLine();
-        int animalQuiz = 1;
+        int animalQuiz = 2;
         List<AnimalCRUD.Animals> animals = AnimalCRUD.getAnimals();
         if (animals == null) {
             return;

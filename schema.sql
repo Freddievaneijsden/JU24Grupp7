@@ -46,10 +46,18 @@ create table leaderboard (
     leaderboard_id int not null auto_increment,
     leaderboard_player varchar(255) not null,
     leaderboard_score int not null,
-    leaderboard_quiz_type int not null,
-    primary key (leaderboard_id)
+    leaderboard_quizType_id int not null,
+    primary key (leaderboard_id),
+    foreign key (leaderboard_quizType_id) references quizType (quizType_id)
 );
 
+create table quizType
+(
+    quizType_id int not null auto_increment,
+    quizType_name varchar(255) not null,
+    primary key (quizType_id),
+    unique (quizType_name)
+);
 
 -- INSERT INTO
 insert into country (country_name, country_language)
@@ -120,6 +128,12 @@ values ('Mute swan','1',null),
        ('Tiger',null,'What is the largest cat animal in the world?'),
        ('Whale',null,'What is the largest mammal in the world?');
 
+insert into quizType (quizType_name)
+values ('Country'),
+       ('Animal'),
+       ('Celebrity'),
+       ('Dish');
+
 -- UNIQUE TEST
     insert into dish (dish_name, dish_country_id)
     values ('Asado', 9);
@@ -136,4 +150,5 @@ values ('Mute swan','1',null),
     drop table dish;
     drop table animal;
     drop table leaderboard;
+    drop table quizType;
 
