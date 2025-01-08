@@ -1,6 +1,7 @@
 package quiz;
 
 import CRUD.CelebrityCRUD;
+import CRUD.LeaderboardCRUD;
 import entity.Celebrity;
 
 import java.util.Scanner;
@@ -13,12 +14,17 @@ public class CelebrityQuiz implements Quiz {
     @Override
     public void play() {
         System.out.println("Welcome to the Celebrity Quiz!");
+        System.out.println("Enter your name: ");
+        String quizName = scanner.nextLine();
+        int celebrityQuiz = 3;
         questionOne();
         questionTwo();
         questionThree();
         questionFour();
         questionFive();
         System.out.println("\nQuiz complete! Your total score: " + score + "/5");
+        LeaderboardCRUD.insertOne(quizName, score, celebrityQuiz);
+        Result.showResult(quizName, score);
     }
 
     public void questionOne() {
