@@ -2,6 +2,7 @@ package CRUD;
 
 import entity.Country;
 import entity.Leaderboard;
+import entity.QuizType;
 import jakarta.persistence.TypedQuery;
 
 import java.util.List;
@@ -16,12 +17,12 @@ public class LeaderboardCRUD {
             List<Leaderboard> players = query.getResultList();
             for (int i = 0; i < players.size(); i++) {
                 System.out.println(i + 1 + ". " + players.get(i).getLeaderboardPlayer() + " | Score: " + players.get(i).getLeaderboardScore()
-                + " | QuizType: " + players.get(i).getLeaderboardQuizType());
+                + " | QuizType: " + players.get(i).getQuizType());
             }
         });
     }
 
-    public static  void insertOne(String player, int score, int quizType) {
+    public static  void insertOne(String player, int score, int quizTypeId) {
         if (player == null || player.isEmpty()) {
             System.out.println("Name cannot be empty or null");
         }
@@ -29,7 +30,13 @@ public class LeaderboardCRUD {
             Leaderboard leaderboard = new Leaderboard();
             leaderboard.setLeaderboardPlayer(player);
             leaderboard.setLeaderboardScore(score);
-            leaderboard.setLeaderboardQuizType(quizType);
+
+            QuizType quizType = entityManager.find(QuizType.class, quizTypeId);
+            if (quizType == null) {
+                System.out.println("Invalid quiz type ID: " + quizTypeId);
+                return; // Exit early if the QuizType does not exist.
+            }
+            leaderboard.setQuizType(quizType);
 
             entityManager.persist(leaderboard);
             System.out.println("Inserted successfully: " + player + " " + score + " " + quizType);
@@ -42,8 +49,9 @@ public class LeaderboardCRUD {
             List<Leaderboard> players = query.getResultList();
             for (int i = 0; i < players.size(); i++) {
                 System.out.println(i + 1 + ". " + players.get(i).getLeaderboardPlayer() + " | Score: " + players.get(i).getLeaderboardScore()
-                        + " | QuizType: " + players.get(i).getLeaderboardQuizType());
+                        + " | QuizType: " + players.get(i).getQuizType());
             }
+            System.out.println();
         });
     }
 

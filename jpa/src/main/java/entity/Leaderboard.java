@@ -16,8 +16,9 @@ public class Leaderboard {
     @Column(name = "leaderboard_score")
     private int leaderboardScore;
 
-    @Column (name = "leaderboard_quiz_type")
-    private int leaderboardQuizType;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "leaderboard_quizType_id", nullable = false)
+    private QuizType quizType;
 
     public int getLeaderboardId() {
         return leaderboardId;
@@ -35,13 +36,6 @@ public class Leaderboard {
         this.leaderboardPlayer = leaderboardPlayer;
     }
 
-    public int getLeaderboardQuizType() {
-        return leaderboardQuizType;
-    }
-
-    public void setLeaderboardQuizType(int leaderboardQuizType) {
-        this.leaderboardQuizType = leaderboardQuizType;
-    }
 
     public int getLeaderboardScore() {
         return leaderboardScore;
@@ -51,13 +45,28 @@ public class Leaderboard {
         this.leaderboardScore = leaderboardScore;
     }
 
+    public QuizType getQuizType() {
+        return quizType;
+    }
+
+    public void setQuizType(QuizType quizType) {
+        this.quizType = quizType;
+    }
+
+
+    public int getQuizTypeId() {
+        return quizType.getQuizTypeId();
+    }
+
+
+
     @Override
     public String toString() {
         return "Leaderboard{" +
                 "leaderboardId=" + leaderboardId +
                 ", leaderboardPlayer='" + leaderboardPlayer + '\'' +
                 ", leaderboardScore=" + leaderboardScore +
-                ", leaderboardQuizType=" + leaderboardQuizType +
+                ", quizType=" + quizType +
                 '}';
     }
 }
