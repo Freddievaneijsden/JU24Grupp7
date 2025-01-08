@@ -34,12 +34,11 @@ public class LeaderboardCRUD {
             QuizType quizType = entityManager.find(QuizType.class, quizTypeId);
             if (quizType == null) {
                 System.out.println("Invalid quiz type ID: " + quizTypeId);
-                return; // Exit early if the QuizType does not exist.
+                return;
             }
             leaderboard.setQuizType(quizType);
 
             entityManager.persist(leaderboard);
-            System.out.println("Inserted successfully: " + player + " " + score + " " + quizType);
         });
     }
 
