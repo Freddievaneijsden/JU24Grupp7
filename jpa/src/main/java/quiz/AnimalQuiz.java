@@ -14,6 +14,7 @@ public class AnimalQuiz implements Quiz { ;
 
 
     public void play() {
+        System.out.println("Welcome to the Animal Quiz!");
         System.out.println("Enter your name: ");
         String quizName = scanner.nextLine();
         int animalQuiz = 2;
