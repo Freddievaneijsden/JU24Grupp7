@@ -13,11 +13,9 @@ public class CelebrityCRUD implements Crudable {
     @Override
     public void selectAll() {
         inTransaction(entityManager -> {
-            TypedQuery<String> query = entityManager.createQuery("SELECT c.celebrityName FROM Celebrity c", String.class);
-            List<String> celebrities = query.getResultList();
-            for (String celebrityName : celebrities) {
-                System.out.println(celebrityName);
-            }
+            TypedQuery<Celebrity> query = entityManager.createQuery("SELECT c FROM Celebrity c", Celebrity.class);
+            List<Celebrity> celebrities = query.getResultList();
+            celebrities.forEach(System.out::println);
         });
     }
 

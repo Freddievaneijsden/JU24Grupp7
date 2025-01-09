@@ -75,7 +75,6 @@ public class CelebrityQuiz implements Quiz {
         }
     }
 
-
     public void questionFour() {
         System.out.println("4. Which famous person invaded Italy?");
         System.out.print("Your answer: ");

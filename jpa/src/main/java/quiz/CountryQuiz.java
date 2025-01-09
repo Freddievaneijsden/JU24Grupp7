@@ -4,7 +4,6 @@ import CRUD.CountryCRUD;
 import CRUD.LeaderboardCRUD;
 import entity.Country;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
