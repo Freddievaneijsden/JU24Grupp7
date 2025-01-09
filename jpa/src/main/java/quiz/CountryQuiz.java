@@ -6,36 +6,46 @@ import entity.Country;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class CountryQuiz  {
     private final Scanner scanner = new Scanner(System.in);
+    private static final String WELCOME_MESSAGE = "Welcome to the Country Quiz!";
     private int score = 0;
     private final List<Country> countries = CountryCRUD.returnAllCountries();
+    private final List<String> namesOfCountries = countries.stream()
+            .map(country -> country.getCountryName().toLowerCase())
+            .toList();
+    private final Map<String, String> questionsAndAnswers = Map.of(
+            "What EU country has the largest population?", "Germany",
+            "What country’s national anthem has no official lyrics and is known in English as ‘The Royal March’?", "Spain",
+            "Which country is known as the Hexagon?", "France",
+            "What country is known as Land of a Thousand Lakes?", "Finland",
+            "Which African country is famous for being home to the Great Pyramid of Giza and the Sphinx?", "Egypt"
+    );
 
     public void play() {
-        System.out.println("Welcome to the Country Quiz!");
+        System.out.println(WELCOME_MESSAGE);
         System.out.println("Enter your name: ");
         String quizName = scanner.nextLine();
         int countryQuiz = 1;
-        questionCountry("1. What EU country has the largest population?", "Germany");
-        questionCountry("2. What country’s national anthem has no official lyrics and is known in English as ‘The Royal March’?", "Spain");
-        questionCountry("3. Which country is known as the Hexagon?", "France");
-        questionCountry("4. What country is known as Land of a Thousand Lakes?", "Finland");
-        questionCountry("5. Which African country is famous for being home to the Great Pyramid of Giza and the Sphinx?", "Egypt");
+        askQuestions();
         LeaderboardCRUD.insertOne(quizName, score, countryQuiz);
         Result.showResult(quizName, score);
+    }
+
+    private void askQuestions() {
+        for (Map.Entry<String, String> entry : questionsAndAnswers.entrySet()) {
+            questionCountry(entry.getKey(), entry.getValue());
+        }
     }
 
     public void questionCountry (String quizQuestion, String correctAnswer) {
         System.out.println(quizQuestion);
         String userAnswer = scanner.nextLine().trim().toLowerCase();
-        List<String> namesOfCountries = new ArrayList<>(List.of());
-        for (Country country : countries) {
-            namesOfCountries.add(country.getCountryName().toLowerCase());
-        }
         if (namesOfCountries.contains(userAnswer) && userAnswer.equalsIgnoreCase(correctAnswer)) {
-                System.out.println("Correct! " + correctAnswer + " has the largest population in the EU.");
+                System.out.println(correctAnswer +  " is correct!");
                 score++;
         }
         else {
