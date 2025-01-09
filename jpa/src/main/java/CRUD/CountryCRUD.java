@@ -3,6 +3,7 @@ package CRUD;
 import entity.Country;
 import jakarta.persistence.TypedQuery;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static util.JPAUtil.inTransaction;
@@ -114,4 +115,14 @@ public class CountryCRUD implements Crudable{
         return countryHolder[0];
     }
 
+    public static List<Country> returnAllCountries() {
+        List <Country> countries = new ArrayList<>();
+        inTransaction(entityManager -> {
+            TypedQuery<Country> query = entityManager.createQuery("SELECT c FROM Country c", Country.class);
+            List<Country> countriesHolder = query.getResultList();
+            countries.addAll(countriesHolder);
+        });
+        return countries;
+    }
 }
+
