@@ -95,7 +95,6 @@ public class CelebrityQuiz implements Quiz {
         }
     }
 
-
     public void questionFive() {
         System.out.println("5. Who is John Stormare's most iconic character?");
         System.out.print("Your answer: ");
