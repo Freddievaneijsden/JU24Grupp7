@@ -17,7 +17,7 @@ public class CelebrityQuiz implements Quiz {
         System.out.println("Enter your name: ");
         String quizName = scanner.nextLine();
         int celebrityQuiz = 3;
-        questionOne();
+       questionOne();
         questionTwo();
         questionThree();
         questionFour();
@@ -28,21 +28,20 @@ public class CelebrityQuiz implements Quiz {
     }
 
     public void questionOne() {
-        System.out.println("1. Which country is Ronaldo from?");
+        System.out.println("1. Who is the famous Brazilian football player?");
         System.out.print("Your answer: ");
-        String questionOneAnswer = scanner.nextLine().trim().toLowerCase(); // Användarens svar
+        String questionOneAnswer = scanner.nextLine().trim().toLowerCase();
 
-        String correctCountry = "portugal"; // Det förväntade korrekta svaret
+        String correctCelebrity = "ronaldo";
+        Celebrity celebrity = celebrityCRUD.selectCelebrityAndReturn(questionOneAnswer);
 
-        // Kontrollera om svaret matchar direkt utan att bero på databasen
-        if (questionOneAnswer.equals(correctCountry)) {
-            System.out.println("Correct! Ronaldo is from " + correctCountry + ".");
-            score++; // Öka poängen om svaret är korrekt
+        if (celebrity != null && celebrity.getCelebrityName().equalsIgnoreCase(correctCelebrity)) {
+            System.out.println("Correct! " + correctCelebrity + " is a famous Brazilian football player.");
+            score++;
         } else {
-            System.out.println("Incorrect. The correct answer is " + correctCountry + ".");
+            System.out.println("Incorrect. The correct answer is " + correctCelebrity + ".");
         }
     }
-
 
     public void questionTwo() {
         System.out.println("2. Which celebrity portrayed Joel in the TV series The Last of Us?");
@@ -50,64 +49,62 @@ public class CelebrityQuiz implements Quiz {
         String questionTwoAnswer = scanner.nextLine().trim().toLowerCase();
 
         String correctCelebrity = "pedro pascal";
-        Celebrity celebrity = CelebrityCRUD.selectCelebrityAndReturn(questionTwoAnswer);
+        Celebrity celebrity = celebrityCRUD.selectCelebrityAndReturn(questionTwoAnswer);
 
-        if (celebrity != null) {
-            if (celebrity.getCelebrityName().equalsIgnoreCase(correctCelebrity)) {
-                System.out.println("Correct! " + celebrity.getCelebrityName() + " portrayed Joel in The Last of Us.");
-                score++;
-            } else {
-                System.out.println("Incorrect. The correct answer is " + correctCelebrity + ".");
-            }
+        if (celebrity != null && celebrity.getCelebrityName().equalsIgnoreCase(correctCelebrity)) {
+            System.out.println("Correct! " + correctCelebrity + " portrayed Joel in The Last of Us.");
+            score++;
+        } else {
+            System.out.println("Incorrect. The correct answer is " + correctCelebrity + ".");
+        }
+    }
+
+    public void questionThree() {
+        System.out.println("3. Who portrayed Tina Carlyle in the movie The Mask?");
+        System.out.print("Your answer: ");
+        String questionThreeAnswer = scanner.nextLine().trim().toLowerCase();
+
+        String correctCelebrity = "cameron diaz";
+        Celebrity celebrity = celebrityCRUD.selectCelebrityAndReturn(questionThreeAnswer);
+
+        if (celebrity != null && celebrity.getCelebrityName().equalsIgnoreCase(correctCelebrity)) {
+            System.out.println("Correct! " + correctCelebrity + " portrayed Tina Carlyle in The Mask.");
+            score++;
         } else {
             System.out.println("Incorrect. The correct answer is " + correctCelebrity + ".");
         }
     }
 
 
-    public void questionThree() {
-        System.out.println("3. Which movie is Cameron Diaz most known for?");
-        System.out.print("Your answer: ");
-        String questionThreeAnswer = scanner.nextLine().trim().toLowerCase();
-
-        String correctMovie = "the mask";
-
-        if (questionThreeAnswer.equals(correctMovie)) {
-            System.out.println("Correct! Cameron Diaz is most known for " + correctMovie + ".");
-            score++;
-        } else {
-            System.out.println("Incorrect. The correct answer is " + correctMovie + ".");
-        }
-    }
-
     public void questionFour() {
-        System.out.println("4. Which country did Napoleon invade first?");
+        System.out.println("4. Which famous person invaded Italy?");
         System.out.print("Your answer: ");
         String questionFourAnswer = scanner.nextLine().trim().toLowerCase();
 
-        String correctCountry = "italy";
-        // Eftersom 'invadedCountries' inte finns i Celebrity-entiteten, jämför direkt
-        if (questionFourAnswer.equals(correctCountry)) {
-            System.out.println("Correct! Napoleon's first country he invaded was " + correctCountry + ".");
+        String correctCelebrity = "napoleon bonaparte";
+        Celebrity celebrity = celebrityCRUD.selectCelebrityAndReturn(questionFourAnswer);
+
+        if (celebrity != null && celebrity.getCelebrityName().equalsIgnoreCase(correctCelebrity)) {
+            System.out.println("Correct! " + correctCelebrity + " invaded Italy.");
             score++;
         } else {
-            System.out.println("Incorrect. The correct answer is " + correctCountry + ".");
+            System.out.println("Incorrect. The correct answer is " + correctCelebrity + ".");
         }
     }
 
-
     public void questionFive() {
-        System.out.println("5. Who is John Stormare's most iconic character?");
+        System.out.println("5. Who is known for playing John Abruzzi?");
         System.out.print("Your answer: ");
         String questionFiveAnswer = scanner.nextLine().trim().toLowerCase();
 
-        String correctCharacter = "john abruzzi";
+        String correctCelebrity = "peter stormare";
+        Celebrity celebrity = celebrityCRUD.selectCelebrityAndReturn(questionFiveAnswer);
 
-        if (questionFiveAnswer.equals(correctCharacter)) {
-            System.out.println("Correct! John Stormare's most iconic character is " + correctCharacter + ".");
+        if (celebrity != null && celebrity.getCelebrityName().equalsIgnoreCase(correctCelebrity)) {
+            System.out.println("Correct! " + correctCelebrity + " is known for playing John Abruzzi.");
             score++;
         } else {
-            System.out.println("Incorrect. The correct answer is " + correctCharacter + ".");
+            System.out.println("Incorrect. The correct answer is " + correctCelebrity + ".");
         }
     }
 }
